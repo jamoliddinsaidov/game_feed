@@ -7,6 +7,8 @@ const useStyles = createStyles((theme) => ({
   navbar: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
     paddingBottom: 0,
+    position: 'sticky',
+    top: 0,
   },
 
   header: {
@@ -54,7 +56,7 @@ export function NavbarNested() {
   const { classes } = useStyles()
 
   return (
-    <Navbar height={'100vh'} width={{ sm: 300 }} p='md' className={classes.navbar}>
+    <Navbar height={'100vh'} width={{ sm: 270 }} p='md' className={classes.navbar}>
       <Navbar.Section className={classes.header}>
         <Title className={classes.title}>
           Game

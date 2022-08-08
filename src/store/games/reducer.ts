@@ -1,6 +1,7 @@
 import { IGamesAction, GamesActionTypes } from './actionTypes'
+import { IGamesState } from '../../types/GamePropTypes'
 
-const initialState = {
+const initialState: IGamesState = {
   games: [],
   loading: false,
   hasError: false,
