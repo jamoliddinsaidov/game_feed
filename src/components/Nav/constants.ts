@@ -1,11 +1,6 @@
-import {
-  IconCalendarStats,
-  IconHome,
-  IconPresentationAnalytics,
-  IconFileAnalytics,
-  IconBrandSteam,
-  IconChartBubble,
-} from '@tabler/icons'
+import { IconCalendarStats, IconHome, IconPresentationAnalytics, IconBrandSteam, IconChartBubble } from '@tabler/icons'
+
+const previousYear = new Date().getFullYear() - 1
 
 export const linkData = [
   { label: 'Home', icon: IconHome },
@@ -14,45 +9,44 @@ export const linkData = [
     icon: IconCalendarStats,
     initiallyOpened: true,
     links: [
-      { label: 'Last 30 days', link: '/' },
-      { label: 'This week', link: '/' },
-      { label: 'Next week', link: '/' },
+      { label: 'Last 30 days', link: '/releases/last30days' },
+      { label: 'This week', link: '/releases/thisweek' },
+      { label: 'Next week', link: '/releases/nextweek' },
     ],
   },
   {
     label: 'Top',
     icon: IconPresentationAnalytics,
     links: [
-      { label: 'Best of the year', link: '/' },
-      { label: `Popular in ${new Date().getFullYear() - 1}`, link: '/' },
-      { label: 'All time top 250', link: '/' },
+      { label: 'Best of the year', link: '/top/bestoftheyear' },
+      { label: `Popular in ${previousYear}`, link: `/top/popularin${previousYear}` },
+      { label: 'All time top 250', link: '/top/alltimetop250' },
     ],
   },
-  { label: 'All Games', icon: IconFileAnalytics },
   {
     label: 'Platforms',
     icon: IconBrandSteam,
     links: [
-      { label: 'PC', link: '/' },
-      { label: 'PlayStation', link: '/' },
-      { label: 'Xbox One', link: '/' },
-      { label: 'Nintendo Switch', link: '/' },
-      { label: 'iOS', link: '/' },
-      { label: 'Android', link: '/' },
+      { label: 'PC', link: '/platforms/pc' },
+      { label: 'PlayStation', link: '/platforms/playstation' },
+      { label: 'Xbox One', link: '/platforms/xboxone' },
+      { label: 'Nintendo Switch', link: '/platforms/nintendo' },
+      { label: 'iOS', link: '/platforms/iOS' },
+      { label: 'Android', link: '/platforms/android' },
     ],
   },
   {
     label: 'Genres',
     icon: IconChartBubble,
     links: [
-      { label: 'Action', link: '/' },
-      { label: 'Strategy', link: '/' },
-      { label: 'RPG', link: '/' },
-      { label: 'Shooter', link: '/' },
-      { label: 'Adventure', link: '/' },
-      { label: 'Puzzle', link: '/' },
-      { label: 'Racing', link: '/' },
-      { label: 'Sports', link: '/' },
+      { label: 'Action', link: '/genres/action' },
+      { label: 'Strategy', link: '/genres/strategy' },
+      { label: 'RPG', link: '/genres/rpg' },
+      { label: 'Shooter', link: '/genres/shooter' },
+      { label: 'Adventure', link: '/genres/adventures' },
+      { label: 'Puzzle', link: '/genres/puzzle' },
+      { label: 'Racing', link: '/genres/racing' },
+      { label: 'Sports', link: '/genres/sports' },
     ],
   },
 ]

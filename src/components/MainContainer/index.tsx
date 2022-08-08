@@ -1,9 +1,6 @@
 import { createStyles, Title, Text, Grid } from '@mantine/core'
 import { GameCard } from '../GameCard'
-
-// redux
-import { useAppSelector } from '../../hooks/reduxHooks'
-import { selectGames } from '../../store/games/selectors'
+import { MainContainerProps } from '../../types/ComponentsPropTypes'
 
 const useStyles = createStyles((theme) => ({
   container: {
@@ -21,15 +18,13 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function MainContainer() {
+export function MainContainer({ title, description, gamesState }: MainContainerProps) {
   const { classes } = useStyles()
-  const gamesState = useAppSelector(selectGames)
 
   return (
     <div className={classes.container}>
-      <Title className={classes.title}>Trending games</Title>
-      <Text>Based on player counts and release date</Text>
-
+      <Title className={classes.title}>{title}</Title>
+      {description && <Text>{description}</Text>}
       <Grid className={classes.grid} gutter='xl'>
         {!gamesState.loading &&
           gamesState.games.map((game) => (

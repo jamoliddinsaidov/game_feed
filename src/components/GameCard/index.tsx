@@ -1,6 +1,6 @@
 import { createStyles, Card, Image, ActionIcon, Group, Text, Badge } from '@mantine/core'
-import { IconHeart, IconCopy } from '@tabler/icons'
-import { IGenre } from '../../types/GamePropTypes'
+import { IconHeart, IconCopy, IconStar } from '@tabler/icons'
+import { GameCardProps } from '../../types/ComponentsPropTypes'
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -16,17 +16,15 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.md,
     borderTop: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]}`,
   },
+
+  rating: {
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: 16,
+  },
 }))
 
-interface ArticleCardFooterProps {
-  id: number
-  background_image?: string
-  genres: IGenre[]
-  name: string
-  rating?: number
-}
-
-export function GameCard({ id, background_image, genres, name, rating }: ArticleCardFooterProps) {
+export function GameCard({ id, background_image, genres, name, rating }: GameCardProps) {
   const { classes, theme } = useStyles()
 
   return (
@@ -47,9 +45,10 @@ export function GameCard({ id, background_image, genres, name, rating }: Article
 
       <Card.Section className={classes.footer}>
         <Group position='apart'>
-          <Text size='xs' color='dimmed'>
-            {rating}
-          </Text>
+          <Group className={classes.rating}>
+            <IconStar size={18} color={theme.colors.yellow[6]} stroke={1.5} />
+            <Text sx={{ marginLeft: '-0.5rem' }}>{rating}</Text>
+          </Group>
           <Group spacing={0}>
             <ActionIcon>
               <IconHeart size={18} color={theme.colors.red[6]} stroke={1.5} />

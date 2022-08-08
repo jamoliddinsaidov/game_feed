@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, createStyles } from '@mantine/core'
-import { TablerIcon, IconChevronLeft, IconChevronRight } from '@tabler/icons'
+import { Link, useNavigate } from 'react-router-dom'
+import { Group, Box, Collapse, ThemeIcon, UnstyledButton, createStyles } from '@mantine/core'
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons'
+import { LinksGroupProps } from '../../types/ComponentsPropTypes'
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -39,33 +41,30 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-interface LinksGroupProps {
-  icon: TablerIcon
-  label: string
-  initiallyOpened?: boolean
-  links?: { label: string; link: string }[]
-}
-
 export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksGroupProps) {
   const { classes, theme } = useStyles()
   const hasLinks = Array.isArray(links)
   const [opened, setOpened] = useState(initiallyOpened || false)
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft
   const items = (hasLinks ? links : []).map((link) => (
-    <Text<'a'>
-      component='a'
-      className={classes.link}
-      href={link.link}
-      key={link.label}
-      onClick={(event) => event.preventDefault()}
-    >
+    <Link className={classes.link} to={link.link} key={link.label}>
       {link.label}
-    </Text>
+    </Link>
   ))
+  const navigate = useNavigate()
+
+  const handleLinkClick = () => {
+    setOpened((o) => !o)
+
+    if (!hasLinks) {
+      const link = label.toLowerCase().split(' ').join('')
+      navigate(link)
+    }
+  }
 
   return (
     <>
-      <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
+      <UnstyledButton onClick={handleLinkClick} className={classes.control}>
         <Group position='apart' spacing={0}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <ThemeIcon variant='light' size={30}>

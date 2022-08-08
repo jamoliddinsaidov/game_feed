@@ -1,10 +1,7 @@
 import React from 'react'
 import { MantineProvider, ColorScheme, ColorSchemeProvider, createStyles } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
-
-interface LayoutProps {
-  children: React.ReactNode
-}
+import { LayoutProps } from '../../types/ComponentsPropTypes'
 
 const THEME_KEY = 'mantine-color-scheme'
 
