@@ -1,6 +1,7 @@
 import { Navbar, Title, Text, ScrollArea, createStyles } from '@mantine/core'
 import { LinksGroup } from './NavbarLinksGroup'
 import { linkData } from './constants'
+import { ToggleTheme } from '../ToggleTheme'
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -9,6 +10,10 @@ const useStyles = createStyles((theme) => ({
   },
 
   header: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: '10vh',
     padding: theme.spacing.md,
     paddingTop: 0,
     marginLeft: -theme.spacing.md,
@@ -31,7 +36,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 800,
     fontSize: 30,
     letterSpacing: -1,
-    color: theme.white,
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
 
     '@media (max-width: 520px)': {
@@ -57,6 +62,8 @@ export function NavbarNested() {
             Feed
           </Text>
         </Title>
+
+        <ToggleTheme />
       </Navbar.Section>
 
       <Navbar.Section grow className={classes.links} component={ScrollArea}>

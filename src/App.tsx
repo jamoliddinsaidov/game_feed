@@ -1,12 +1,14 @@
 import React from 'react'
-import { MantineProvider } from '@mantine/core'
+
+// components
+import { Layout } from './components/Layout'
 import { NavbarNested } from './components/Nav'
 
 function App() {
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: true ? 'dark' : 'light' }}>
+    <Layout>
       <NavbarNested />
-    </MantineProvider>
+    </Layout>
   )
 }
 
