@@ -1,20 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { MantineProvider } from '@mantine/core'
-
-// redux
-import { useAppDispatch } from './hooks/reduxHooks'
-import { fetchGames } from './store/games/thunk'
+import { NavbarNested } from './components/Nav'
 
 function App() {
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(fetchGames() as any)
-  }, [dispatch])
-
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
-      <div></div>
+    <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: true ? 'dark' : 'light' }}>
+      <NavbarNested />
     </MantineProvider>
   )
 }
