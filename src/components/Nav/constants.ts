@@ -23,6 +23,20 @@ export const linkData = [
     ],
   },
   {
+    label: 'Genres',
+    icon: IconChartBubble,
+    links: [
+      { label: 'Action', link: '/genres/action' },
+      { label: 'Strategy', link: '/genres/strategy' },
+      { label: 'RPG', link: '/genres/rpg' },
+      { label: 'Shooter', link: '/genres/shooter' },
+      { label: 'Adventure', link: '/genres/adventure' },
+      { label: 'Puzzle', link: '/genres/puzzle' },
+      { label: 'Racing', link: '/genres/racing' },
+      { label: 'Sports', link: '/genres/sports' },
+    ],
+  },
+  {
     label: 'Platforms',
     icon: IconBrandSteam,
     links: [
@@ -32,20 +46,6 @@ export const linkData = [
       { label: 'Nintendo Switch', link: '/platforms/nintendo' },
       { label: 'iOS', link: '/platforms/ios' },
       { label: 'Android', link: '/platforms/android' },
-    ],
-  },
-  {
-    label: 'Genres',
-    icon: IconChartBubble,
-    links: [
-      { label: 'Action', link: '/genres/action' },
-      { label: 'Strategy', link: '/genres/strategy' },
-      { label: 'RPG', link: '/genres/rpg' },
-      { label: 'Shooter', link: '/genres/shooter' },
-      { label: 'Adventure', link: '/genres/adventures' },
-      { label: 'Puzzle', link: '/genres/puzzle' },
-      { label: 'Racing', link: '/genres/racing' },
-      { label: 'Sports', link: '/genres/sports' },
     ],
   },
 ]

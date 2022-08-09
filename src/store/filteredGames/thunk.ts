@@ -48,6 +48,24 @@ export function fetchGamesByPlatform(platformId: string) {
       const response = await fetch(`${base_url}?${platformQuery}&${api_key}`)
       const data = await response.json()
       const filteredGames = data.results
+
+      dispatch(fetchFilteredGamesSuccess(filteredGames))
+    } catch (error) {
+      dispatch(fetchFilteredGamesFailure())
+    }
+  }
+}
+
+export function fetchGamesByGenres(genre: string) {
+  return async function (dispatch: Dispatch<IFilteredGamesAction>) {
+    dispatch(fetchFilteredGames())
+
+    try {
+      const genreQuery = `genres=${genre}`
+      const response = await fetch(`${base_url}?${genreQuery}&${api_key}`)
+      const data = await response.json()
+      const filteredGames = data.results
+
       dispatch(fetchFilteredGamesSuccess(filteredGames))
     } catch (error) {
       dispatch(fetchFilteredGamesFailure())

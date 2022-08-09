@@ -9,6 +9,7 @@ import { Home } from './pages/Home'
 import { Releases } from './pages/Releases'
 import { Top } from './pages/Top'
 import { Platforms } from './pages/Platforms'
+import { Genres } from './pages/Genres'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/releases/:id' element={<Releases />} />
         <Route path='/top/:id' element={<Top />} />
         <Route path='/platforms/:id' element={<Platforms />} />
+        <Route path='/genres/:id' element={<Genres />} />
         <Route path='/' element={<Navigate to='/home' />} />
       </Routes>
     </Layout>

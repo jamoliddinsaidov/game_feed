@@ -56,6 +56,14 @@ export function getTitleById(id: string): string {
     nintendo: 'Nintendo Switch',
     ios: 'iOS',
     android: 'Android',
+    action: 'Action',
+    strategy: 'Strategy',
+    rgp: 'RPG',
+    shooter: 'Shooter',
+    adventure: 'Adventure',
+    puzzle: 'Puzzle',
+    racing: 'Racing',
+    sports: 'Sports',
   }
 
   return titles[id]
