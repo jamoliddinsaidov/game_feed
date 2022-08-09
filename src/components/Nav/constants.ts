@@ -20,7 +20,7 @@ export const linkData = [
     links: [
       { label: 'Best of the year', link: '/top/bestoftheyear' },
       { label: `Popular in ${previousYear}`, link: `/top/popularin${previousYear}` },
-      { label: 'All time top 250', link: '/top/alltimetop250' },
+      { label: 'All time top', link: '/top/alltimetop' },
     ],
   },
   {

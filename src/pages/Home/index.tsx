@@ -1,15 +1,23 @@
+import { useEffect } from 'react'
+
+// components
 import { MainContainer } from '../../components/MainContainer'
-import { useAppSelector } from '../../hooks/reduxHooks'
+
+// redux
+import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
 import { selectGames } from '../../store/games/selectors'
+import { fetchGames } from '../../store/games/thunk'
 
 export function Home() {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchGames() as any)
+  }, [dispatch])
+
   const gamesState = useAppSelector(selectGames)
 
   return (
-    <MainContainer
-      title='Trending games'
-      description='Based on player counts and release date'
-      gamesState={gamesState}
-    />
+    <MainContainer title='Browse Games' description='Based on player counts and release date' gamesState={gamesState} />
   )
 }
