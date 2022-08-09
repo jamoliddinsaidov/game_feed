@@ -1,3 +1,5 @@
+import { IGame } from '../../types/GamePropTypes'
+
 export enum GamesActionTypes {
   FETCH_GAMES = 'FETCH_GAMES',
   FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS',
@@ -10,7 +12,7 @@ export interface IFetchGamesAction {
 
 export interface IFetchGamesSuccessAction {
   type: GamesActionTypes.FETCH_GAMES_SUCCESS
-  payload: [{}]
+  payload: IGame[]
 }
 
 export interface IFetchGamesFailureAction {

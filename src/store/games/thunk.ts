@@ -1,9 +1,7 @@
 import { Dispatch } from 'redux'
 import { IGamesAction } from './actionTypes'
 import { fetchGames as fetchGamesAction, fetchGamesFailure, fetchGamesSuccess } from './actionCreators'
-
-const base_url = 'https://api.rawg.io/api/games'
-const api_key = `key=${process.env.REACT_APP_RAWG_API_KEY}`
+import { base_url, api_key } from '../constants'
 
 export function fetchGames() {
   return async function (dispatch: Dispatch<IGamesAction>) {
