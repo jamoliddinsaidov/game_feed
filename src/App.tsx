@@ -11,6 +11,7 @@ import { NavbarNested } from './components/Nav'
 
 // pages
 import { Home } from './pages/Home'
+import { Releases } from './pages/Releases'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -24,7 +25,7 @@ function App() {
       <NavbarNested />
       <Routes>
         <Route path='/home' element={<Home />} />
-        <Route path='/last30days' element={<div>Last 30 days</div>} />
+        <Route path='/releases/:id' element={<Releases />} />
         <Route path='/' element={<Navigate to='/home' />} />
       </Routes>
     </Layout>
