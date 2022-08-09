@@ -43,20 +43,39 @@ export function getDateById(id: string): [string, string] {
 
 export function getTitleById(id: string): string {
   const prevYear = new Date().getFullYear() - 1
-  switch (id) {
-    case 'last30days':
-      return 'Last 30 Days'
-    case 'thisweek':
-      return 'This Week'
-    case 'nextweek':
-      return 'Next Week'
-    case 'bestoftheyear':
-      return 'Best of the Year'
-    case `popularin${prevYear}`:
-      return `Popular in ${prevYear}`
-    case 'alltimetop':
-      return 'All Time Top'
+  const titles = {
+    last30days: 'Last 30 Days',
+    thisweek: 'This Week',
+    nextweek: 'Next Week',
+    bestoftheyear: 'Best of the Year',
+    [`popularin${prevYear}`]: `Popular in ${prevYear}`,
+    alltimetop: 'All Time Top',
+    pc: 'PC',
+    playstation: 'PlayStation',
+    xboxone: 'Xbox One',
+    nintendo: 'Nintendo Switch',
+    ios: 'iOS',
+    android: 'Android',
+  }
+
+  return titles[id]
+}
+
+export function getPlatformId(platform: string): string {
+  switch (platform) {
+    case 'pc':
+      return '4'
+    case 'playstation':
+      return '18'
+    case 'xboxone':
+      return '1'
+    case 'nintendo':
+      return '7'
+    case 'ios':
+      return '3'
+    case 'android':
+      return '21'
     default:
-      return 'Something went wrong...'
+      return '0'
   }
 }

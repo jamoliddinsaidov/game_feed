@@ -20,7 +20,7 @@ export function Top() {
     dispatch(fetchGamesByRatingAndDate(start, end) as any)
   }, [dispatch, end, start])
 
-  const filteredGames = useAppSelector(selectFilteredGames)
+  const topGames = useAppSelector(selectFilteredGames)
 
-  return <MainContainer title={title} gamesState={filteredGames} />
+  return <MainContainer title={title} gamesState={topGames} />
 }

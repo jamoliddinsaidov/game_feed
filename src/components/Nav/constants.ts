@@ -7,7 +7,6 @@ export const linkData = [
   {
     label: 'New Releases',
     icon: IconCalendarStats,
-    initiallyOpened: true,
     links: [
       { label: 'Last 30 days', link: '/releases/last30days' },
       { label: 'This week', link: '/releases/thisweek' },
@@ -31,7 +30,7 @@ export const linkData = [
       { label: 'PlayStation', link: '/platforms/playstation' },
       { label: 'Xbox One', link: '/platforms/xboxone' },
       { label: 'Nintendo Switch', link: '/platforms/nintendo' },
-      { label: 'iOS', link: '/platforms/iOS' },
+      { label: 'iOS', link: '/platforms/ios' },
       { label: 'Android', link: '/platforms/android' },
     ],
   },

@@ -8,6 +8,7 @@ import { NavbarNested } from './components/Nav'
 import { Home } from './pages/Home'
 import { Releases } from './pages/Releases'
 import { Top } from './pages/Top'
+import { Platforms } from './pages/Platforms'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/releases/:id' element={<Releases />} />
         <Route path='/top/:id' element={<Top />} />
+        <Route path='/platforms/:id' element={<Platforms />} />
         <Route path='/' element={<Navigate to='/home' />} />
       </Routes>
     </Layout>

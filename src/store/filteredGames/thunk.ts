@@ -38,3 +38,19 @@ export function fetchGamesByRatingAndDate(start: string, end: string) {
     }
   }
 }
+
+export function fetchGamesByPlatform(platformId: string) {
+  return async function (dispatch: Dispatch<IFilteredGamesAction>) {
+    dispatch(fetchFilteredGames())
+
+    try {
+      const platformQuery = `platforms=${platformId}`
+      const response = await fetch(`${base_url}?${platformQuery}&${api_key}`)
+      const data = await response.json()
+      const filteredGames = data.results
+      dispatch(fetchFilteredGamesSuccess(filteredGames))
+    } catch (error) {
+      dispatch(fetchFilteredGamesFailure())
+    }
+  }
+}
