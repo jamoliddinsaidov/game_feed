@@ -10,6 +10,7 @@ import { Releases } from './pages/Releases'
 import { Top } from './pages/Top'
 import { Platforms } from './pages/Platforms'
 import { Genres } from './pages/Genres'
+import { GameDetails } from './pages/GameDetails'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/top/:id' element={<Top />} />
         <Route path='/platforms/:id' element={<Platforms />} />
         <Route path='/genres/:id' element={<Genres />} />
+        <Route path='/game/:id' element={<GameDetails />} />
         <Route path='/' element={<Navigate to='/home' />} />
       </Routes>
     </Layout>
