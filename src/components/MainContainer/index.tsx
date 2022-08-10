@@ -1,11 +1,18 @@
-import { createStyles, Title, Text, Grid } from '@mantine/core'
+import { createStyles, Title, Grid } from '@mantine/core'
 import { GameCard } from '../GameCard'
 import { Loading } from '../Loader'
 import { MainContainerProps } from '../../types/ComponentsPropTypes'
 
 const useStyles = createStyles((theme) => ({
   container: {
+    width: '100%',
     margin: '0.5rem 1.5rem',
+  },
+
+  titleContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 
   title: {
@@ -19,13 +26,15 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function MainContainer({ title, description, gamesState }: MainContainerProps) {
+export function MainContainer({ title, gamesState, searchFilter }: MainContainerProps) {
   const { classes } = useStyles()
 
   return (
     <div className={classes.container}>
-      <Title className={classes.title}>{title}</Title>
-      {description && <Text>{description}</Text>}
+      <div className={classes.titleContainer}>
+        <Title className={classes.title}>{title}</Title>
+        {searchFilter}
+      </div>
       <Grid className={classes.grid} gutter='xl'>
         {!gamesState.loading ? (
           gamesState.games.map((game) => (

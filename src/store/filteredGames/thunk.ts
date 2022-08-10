@@ -5,24 +5,17 @@ import {
   fetchFilteredGamesSuccess,
   fetchFilteredGamesFailure,
 } from './actionCreators'
-import { base_url, api_key } from '../constants'
+import { FetchFilteredGamesProps } from '../../types/ComponentsPropTypes'
 
-interface FetchFilteredGamesProps {
-  date?: {
-    start: string
-    end: string
-  }
-  filterByRating?: boolean
-  platformId?: string
-  genre?: string
-}
+export const base_url = 'https://api.rawg.io/api/games'
+export const api_key = `key=${process.env.REACT_APP_RAWG_API_KEY}`
 
-export function fetchFilteredGames({ date, filterByRating, platformId, genre }: FetchFilteredGamesProps) {
+export function fetchFilteredGames(queryObj: FetchFilteredGamesProps) {
   return async function (dispatch: Dispatch<IFilteredGamesAction>) {
     dispatch(fetchFilteredGamesAction())
 
     try {
-      let query = getQueries({ date, filterByRating, platformId, genre })
+      let query = getQueries(queryObj)
       const response = await fetch(`${base_url}?${query}${api_key}`)
       const data = await response.json()
       const filteredGames = data.results
@@ -34,27 +27,32 @@ export function fetchFilteredGames({ date, filterByRating, platformId, genre }: 
   }
 }
 
-function getQueries({ date, filterByRating, platformId, genre }: FetchFilteredGamesProps): string {
+function getQueries({ date, filterByRating, platformId, genre, search }: FetchFilteredGamesProps): string {
   let query = ''
   if (date) {
     const { start, end } = date
-    const dateQuery = `dates=${start},${end}&`
+    const dateQuery = `dates=${start},${end}&ordering=-rating&`
     query += dateQuery
   }
 
   if (filterByRating) {
-    const ratingQuery = 'metacritic=80,100&'
+    const ratingQuery = 'metacritic=80,100&ordering=-metacritic&'
     query += ratingQuery
   }
 
   if (platformId) {
-    const platformQuery = `platforms=${platformId}&`
+    const platformQuery = `platforms=${platformId}&ordering=-rating&`
     query += platformQuery
   }
 
   if (genre) {
-    const genreQuery = `genres=${genre}&`
+    const genreQuery = `genres=${genre}&ordering=-rating&`
     query += genreQuery
+  }
+
+  if (search) {
+    const searchQuery = `search=${search}&`
+    query += searchQuery
   }
 
   return query

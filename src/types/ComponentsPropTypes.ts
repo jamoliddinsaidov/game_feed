@@ -1,4 +1,5 @@
 import { TablerIcon } from '@tabler/icons'
+import React from 'react'
 import { IGenre, IGamesState } from './GamePropTypes'
 
 export interface LinksGroupProps {
@@ -22,6 +23,23 @@ export interface GameCardProps {
 
 export interface MainContainerProps {
   title: string
-  description?: string
   gamesState: IGamesState
+  searchFilter?: JSX.Element | JSX.Element[]
+}
+
+export interface SearchFilterProps {
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onClick: () => void
+}
+
+export interface FetchFilteredGamesProps {
+  date?: {
+    start: string
+    end: string
+  }
+  filterByRating?: boolean
+  platformId?: string
+  genre?: string
+  search?: string
 }
