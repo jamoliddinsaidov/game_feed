@@ -24,7 +24,7 @@ export interface GameCardProps {
 export interface MainContainerProps {
   title: string
   gamesState: IGamesState
-  searchFilter?: JSX.Element | JSX.Element[]
+  searchProps: SearchFilterProps
 }
 
 export interface SearchFilterProps {

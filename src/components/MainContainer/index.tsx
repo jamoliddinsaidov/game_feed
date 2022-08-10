@@ -1,7 +1,10 @@
 import { createStyles, Title, Grid } from '@mantine/core'
+import { MainContainerProps } from '../../types/ComponentsPropTypes'
+
+// components
 import { GameCard } from '../GameCard'
 import { Loading } from '../Loader'
-import { MainContainerProps } from '../../types/ComponentsPropTypes'
+import { SearchFilter } from '../SearchFilter'
 
 const useStyles = createStyles((theme) => ({
   container: {
@@ -26,14 +29,14 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function MainContainer({ title, gamesState, searchFilter }: MainContainerProps) {
+export function MainContainer({ title, gamesState, searchProps }: MainContainerProps) {
   const { classes } = useStyles()
 
   return (
     <div className={classes.container}>
       <div className={classes.titleContainer}>
         <Title className={classes.title}>{title}</Title>
-        {searchFilter}
+        <SearchFilter {...searchProps} />
       </div>
       <Grid className={classes.grid} gutter='xl'>
         {!gamesState.loading ? (

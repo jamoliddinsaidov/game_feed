@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getTitleById, getPlatformId } from '../../utils'
 
@@ -15,6 +15,7 @@ export function Platforms() {
   const platformName = getTitleById(id!)
   const platformId = getPlatformId(id!)
   const dispatch = useAppDispatch()
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     dispatch(fetchFilteredGames({ platformId }) as any)
@@ -22,5 +23,23 @@ export function Platforms() {
 
   const platformGames = useAppSelector(selectFilteredGames)
 
-  return <MainContainer title={`${platformName} Games`} gamesState={platformGames} />
+  // handlers
+  const handleSearchQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(() => e.target.value)
+  }
+
+  const handleSearchClick = () => {
+    if (searchQuery) {
+      dispatch(fetchFilteredGames({ search: searchQuery, platformId }) as any)
+      setSearchQuery('')
+    }
+  }
+
+  return (
+    <MainContainer
+      title={`${platformName} Games`}
+      gamesState={platformGames}
+      searchProps={{ value: searchQuery, onChange: handleSearchQueryChange, onClick: handleSearchClick }}
+    />
+  )
 }

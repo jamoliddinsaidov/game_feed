@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getDateById, getTitleById } from '../../utils'
 
@@ -15,6 +15,7 @@ export function Releases() {
   const dispatch = useAppDispatch()
   const [start, end] = getDateById(id!)
   const title = getTitleById(id!)
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     dispatch(fetchFilteredGames({ date: { start, end } }) as any)
@@ -22,5 +23,23 @@ export function Releases() {
 
   const filteredGames = useAppSelector(selectFilteredGames)
 
-  return <MainContainer title={title} gamesState={filteredGames} />
+  // handlers
+  const handleSearchQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(() => e.target.value)
+  }
+
+  const handleSearchClick = () => {
+    if (searchQuery) {
+      dispatch(fetchFilteredGames({ search: searchQuery, date: { start, end } }) as any)
+      setSearchQuery('')
+    }
+  }
+
+  return (
+    <MainContainer
+      title={title}
+      gamesState={filteredGames}
+      searchProps={{ value: searchQuery, onChange: handleSearchQueryChange, onClick: handleSearchClick }}
+    />
+  )
 }

@@ -1,8 +1,7 @@
-import React, { useEffect, useState, startTransition } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // components
 import { MainContainer } from '../../components/MainContainer'
-import { SearchFilter } from '../../components/SearchFilter'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
@@ -26,9 +25,7 @@ export function Home() {
 
   const handleSearchClick = () => {
     if (searchQuery) {
-      startTransition(() => {
-        dispatch(fetchFilteredGames({ search: searchQuery }) as any)
-      })
+      dispatch(fetchFilteredGames({ search: searchQuery }) as any)
       setSearchQuery('')
     }
   }
@@ -37,7 +34,7 @@ export function Home() {
     <MainContainer
       title='Browse Games'
       gamesState={gamesState}
-      searchFilter={<SearchFilter value={searchQuery} onChange={handleSearchQueryChange} onClick={handleSearchClick} />}
+      searchProps={{ value: searchQuery, onChange: handleSearchQueryChange, onClick: handleSearchClick }}
     />
   )
 }
