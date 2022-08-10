@@ -43,3 +43,18 @@ export interface FetchFilteredGamesProps {
   genre?: string
   search?: string
 }
+
+export interface StatsRingProps {
+  data: {
+    label: 'exceptional' | 'recommended' | 'meh' | 'skip'
+    stats: string
+    progress: number
+    color: string
+  }[]
+}
+
+export interface BannerProps {
+  background_image: string
+  name: string
+  metacritic: number
+}

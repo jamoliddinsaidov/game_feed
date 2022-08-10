@@ -87,3 +87,24 @@ export function getPlatformId(platform: string): string {
       return '0'
   }
 }
+
+export function getStatsColor(label: string) {
+  switch (label) {
+    case 'exceptional':
+      return '#40C057'
+    case 'recommended':
+      return '#228BE6'
+    case 'meh':
+      return '#FAB005'
+    case 'skip':
+      return '#FA5252'
+    default:
+      return '#000'
+  }
+}
+
+export function capitalize(label: string): string {
+  const firstLetter = label.slice(0, 1).toUpperCase()
+
+  return firstLetter + label.slice(1)
+}

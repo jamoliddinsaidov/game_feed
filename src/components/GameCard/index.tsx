@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { createStyles, Card, Image, ActionIcon, Group, Text, Badge } from '@mantine/core'
 import { IconHeart, IconCopy, IconStar } from '@tabler/icons'
 import { GameCardProps } from '../../types/ComponentsPropTypes'
@@ -9,6 +10,8 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    textDecoration: 'none',
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
   },
 
   footer: {
@@ -30,7 +33,9 @@ export function GameCard({ id, background_image, genres, name, rating }: GameCar
   return (
     <Card withBorder p='lg' radius='md' className={classes.card}>
       <Card.Section mb='sm'>
-        <Image src={background_image} alt={name} height={180} />
+        <Link to={`/game/${id}`}>
+          <Image src={background_image} alt={name} height={180} />
+        </Link>
       </Card.Section>
 
       <Badge>
@@ -39,8 +44,10 @@ export function GameCard({ id, background_image, genres, name, rating }: GameCar
         ))}
       </Badge>
 
-      <Text weight={700} className={classes.title} mt='xs'>
-        {name}
+      <Text weight={700} mt='xs'>
+        <Link to={`/game/${id}`} className={classes.title}>
+          {name}
+        </Link>
       </Text>
 
       <Card.Section className={classes.footer}>
