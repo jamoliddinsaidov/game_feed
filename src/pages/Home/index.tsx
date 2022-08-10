@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // components
-import { MainContainer } from '../../components/MainContainer'
+import { GamesList } from '../../components/GamesList'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
@@ -31,7 +31,7 @@ export function Home() {
   }
 
   return (
-    <MainContainer
+    <GamesList
       title='Browse Games'
       gamesState={gamesState}
       searchProps={{ value: searchQuery, onChange: handleSearchQueryChange, onClick: handleSearchClick }}

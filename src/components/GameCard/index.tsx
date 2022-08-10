@@ -6,6 +6,17 @@ import { GameCardProps } from '../../types/ComponentsPropTypes'
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+
+    img: {
+      transition: 'transform 500ms ease',
+    },
+
+    '&:hover': {
+      boxShadow: theme.shadows.lg,
+      img: {
+        transform: 'scale(1.1)',
+      },
+    },
   },
 
   title: {

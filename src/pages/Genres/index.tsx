@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getTitleById } from '../../utils'
 
 // components
-import { MainContainer } from '../../components/MainContainer'
+import { GamesList } from '../../components/GamesList'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
@@ -35,7 +35,7 @@ export function Genres() {
   }
 
   return (
-    <MainContainer
+    <GamesList
       title={`${platformName} Games`}
       gamesState={filteredGames}
       searchProps={{ value: searchQuery, onChange: handleSearchQueryChange, onClick: handleSearchClick }}

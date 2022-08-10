@@ -29,7 +29,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function MainContainer({ title, gamesState, searchProps }: MainContainerProps) {
+export function GamesList({ title, gamesState, searchProps }: MainContainerProps) {
   const { classes } = useStyles()
 
   return (

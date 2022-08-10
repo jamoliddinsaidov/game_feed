@@ -26,17 +26,7 @@ export function GameDetailsFooter({ publishers, genres, developers, platforms }:
 
   return (
     <Grid className={classes.container}>
-      <Grid.Col xs={12} lg={4}>
-        <Text className={classes.subtitle}>Genres</Text>
-        <Box className={classes.flexCenter}>
-          {genres.map(({ name, id }) => (
-            <Text key={id} sx={{ marginRight: '0.5rem' }}>
-              {name}
-            </Text>
-          ))}
-        </Box>
-      </Grid.Col>
-      <Grid.Col xs={12} lg={4}>
+      <Grid.Col xs={12} lg={6}>
         <Text className={classes.subtitle}>Publishers</Text>
         <Box className={classes.flexCenter}>
           {publishers.map(({ name, id }) => (
@@ -46,7 +36,17 @@ export function GameDetailsFooter({ publishers, genres, developers, platforms }:
           ))}
         </Box>
       </Grid.Col>
-      <Grid.Col xs={12} lg={4}>
+      <Grid.Col xs={12} lg={6}>
+        <Text className={classes.subtitle}>Genres</Text>
+        <Box className={classes.flexCenter}>
+          {genres.map(({ name, id }) => (
+            <Text key={id} sx={{ marginRight: '0.5rem' }}>
+              {name}
+            </Text>
+          ))}
+        </Box>
+      </Grid.Col>
+      <Grid.Col xs={12} lg={6}>
         <Text className={classes.subtitle}>Developers</Text>
         <Box className={classes.flexCenter}>
           {developers.map(({ name, id }) => (
@@ -56,7 +56,7 @@ export function GameDetailsFooter({ publishers, genres, developers, platforms }:
           ))}
         </Box>
       </Grid.Col>
-      <Grid.Col xs={12}>
+      <Grid.Col xs={12} lg={6}>
         <Text className={classes.subtitle}>Platforms</Text>
         <Box className={classes.flexCenter}>
           {platforms.map(({ platform }) => (

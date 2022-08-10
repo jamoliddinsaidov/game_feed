@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getDateById, getTitleById } from '../../utils'
 
 // components
-import { MainContainer } from '../../components/MainContainer'
+import { GamesList } from '../../components/GamesList'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
@@ -36,7 +36,7 @@ export function Releases() {
   }
 
   return (
-    <MainContainer
+    <GamesList
       title={title}
       gamesState={filteredGames}
       searchProps={{ value: searchQuery, onChange: handleSearchQueryChange, onClick: handleSearchClick }}
