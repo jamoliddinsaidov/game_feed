@@ -1,6 +1,6 @@
 import { TablerIcon } from '@tabler/icons'
 import React from 'react'
-import { IGenre, IGamesState } from './GamePropTypes'
+import { IGenre, IGamesState, IPlatform, IDeveloper, IPublisher } from './GamePropTypes'
 
 export interface LinksGroupProps {
   icon: TablerIcon
@@ -57,4 +57,11 @@ export interface BannerProps {
   background_image: string
   name: string
   metacritic: number
+}
+
+export interface GameDetailsFooterProps {
+  platforms: IPlatform[]
+  developers: IDeveloper[]
+  publishers: IPublisher[]
+  genres: IGenre[]
 }
