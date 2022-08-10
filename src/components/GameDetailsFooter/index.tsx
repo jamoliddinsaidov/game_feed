@@ -2,6 +2,10 @@ import { createStyles, Grid, Text, Box } from '@mantine/core'
 import { GameDetailsFooterProps } from '../../types/ComponentsPropTypes'
 
 const useStyles = createStyles((theme) => ({
+  container: {
+    margin: '2rem 0',
+  },
+
   subtitle: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontWeight: 600,
@@ -21,7 +25,7 @@ export function GameDetailsFooter({ publishers, genres, developers, platforms }:
   const { classes } = useStyles()
 
   return (
-    <Grid>
+    <Grid className={classes.container}>
       <Grid.Col xs={12} lg={4}>
         <Text className={classes.subtitle}>Genres</Text>
         <Box className={classes.flexCenter}>

@@ -13,7 +13,10 @@ export type IDeveloper = {
   name: string
 }
 
-export type IPublisher = IDeveloper
+export type IPublisher = {
+  id: number
+  name: string
+}
 
 export type IRating = {
   id: number
@@ -56,4 +59,9 @@ export type IStats = {
   stats: string
   progress: number
   color: string
+}
+
+export type IScreenshot = {
+  id: number
+  image: string
 }
