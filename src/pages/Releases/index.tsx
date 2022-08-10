@@ -7,7 +7,7 @@ import { MainContainer } from '../../components/MainContainer'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
-import { fetchGamesByDate } from '../../store/filteredGames/thunk'
+import { fetchFilteredGames } from '../../store/filteredGames/thunk'
 import { selectFilteredGames } from '../../store/filteredGames/selectors'
 
 export function Releases() {
@@ -17,7 +17,7 @@ export function Releases() {
   const title = getTitleById(id!)
 
   useEffect(() => {
-    dispatch(fetchGamesByDate(start, end) as any)
+    dispatch(fetchFilteredGames({ date: { start, end } }) as any)
   }, [start, end, dispatch])
 
   const filteredGames = useAppSelector(selectFilteredGames)

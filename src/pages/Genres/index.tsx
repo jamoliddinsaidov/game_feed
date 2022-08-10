@@ -7,7 +7,7 @@ import { MainContainer } from '../../components/MainContainer'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
-import { fetchGamesByGenres } from '../../store/filteredGames/thunk'
+import { fetchFilteredGames } from '../../store/filteredGames/thunk'
 import { selectFilteredGames } from '../../store/filteredGames/selectors'
 
 export function Genres() {
@@ -16,7 +16,7 @@ export function Genres() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchGamesByGenres(id!) as any)
+    dispatch(fetchFilteredGames({ genre: id }) as any)
   }, [dispatch, id])
 
   const filteredGames = useAppSelector(selectFilteredGames)

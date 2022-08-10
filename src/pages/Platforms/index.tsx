@@ -7,7 +7,7 @@ import { MainContainer } from '../../components/MainContainer'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
-import { fetchGamesByPlatform } from '../../store/filteredGames/thunk'
+import { fetchFilteredGames } from '../../store/filteredGames/thunk'
 import { selectFilteredGames } from '../../store/filteredGames/selectors'
 
 export function Platforms() {
@@ -17,7 +17,7 @@ export function Platforms() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchGamesByPlatform(platformId) as any)
+    dispatch(fetchFilteredGames({ platformId }) as any)
   }, [dispatch, platformId])
 
   const platformGames = useAppSelector(selectFilteredGames)

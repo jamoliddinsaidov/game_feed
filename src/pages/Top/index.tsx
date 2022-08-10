@@ -7,7 +7,7 @@ import { MainContainer } from '../../components/MainContainer'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
-import { fetchGamesByRatingAndDate } from '../../store/filteredGames/thunk'
+import { fetchFilteredGames } from '../../store/filteredGames/thunk'
 import { selectFilteredGames } from '../../store/filteredGames/selectors'
 
 export function Top() {
@@ -17,7 +17,7 @@ export function Top() {
   const [start, end] = getDateById(id!)
 
   useEffect(() => {
-    dispatch(fetchGamesByRatingAndDate(start, end) as any)
+    dispatch(fetchFilteredGames({ date: { start, end } }) as any)
   }, [dispatch, end, start])
 
   const topGames = useAppSelector(selectFilteredGames)
