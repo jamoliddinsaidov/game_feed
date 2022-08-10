@@ -1,6 +1,6 @@
 import { createStyles, Title, Text, Grid } from '@mantine/core'
 import { GameCard } from '../GameCard'
-import { Loader } from '../Loader'
+import { Loading } from '../Loader'
 import { MainContainerProps } from '../../types/ComponentsPropTypes'
 
 const useStyles = createStyles((theme) => ({
@@ -34,7 +34,7 @@ export function MainContainer({ title, description, gamesState }: MainContainerP
             </Grid.Col>
           ))
         ) : (
-          <Loader />
+          <Loading />
         )}
       </Grid>
     </div>

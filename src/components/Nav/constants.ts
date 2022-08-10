@@ -28,7 +28,6 @@ export const linkData = [
     links: [
       { label: 'Action', link: '/genres/action' },
       { label: 'Strategy', link: '/genres/strategy' },
-      { label: 'RPG', link: '/genres/rpg' },
       { label: 'Shooter', link: '/genres/shooter' },
       { label: 'Adventure', link: '/genres/adventure' },
       { label: 'Puzzle', link: '/genres/puzzle' },
