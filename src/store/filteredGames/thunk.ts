@@ -4,8 +4,10 @@ import {
   fetchFilteredGames as fetchFilteredGamesAction,
   fetchFilteredGamesSuccess,
   fetchFilteredGamesFailure,
+  fetchNextPage,
 } from './actionCreators'
 import { FetchFilteredGamesProps } from '../../types/ComponentsPropTypes'
+import { IRootState } from '..'
 
 export const base_url = 'https://api.rawg.io/api/games'
 export const api_key = `key=${process.env.REACT_APP_RAWG_API_KEY}`
@@ -21,6 +23,23 @@ export function fetchFilteredGames(queryObj: FetchFilteredGamesProps) {
       const filteredGames = data.results
 
       dispatch(fetchFilteredGamesSuccess(filteredGames))
+    } catch (error) {
+      dispatch(fetchFilteredGamesFailure())
+    }
+  }
+}
+
+export function fetchFilterdGamesNextPage(queryObj: FetchFilteredGamesProps) {
+  return async function (dispatch: Dispatch<IFilteredGamesAction>, getState: () => IRootState) {
+    try {
+      const { page } = getState().filteredGames
+      let query = getQueries(queryObj)
+
+      const response = await fetch(`${base_url}?${query}page=${page}&${api_key}`)
+      const data = await response.json()
+      const filteredGames = data.results
+
+      dispatch(fetchNextPage(filteredGames))
     } catch (error) {
       dispatch(fetchFilteredGamesFailure())
     }

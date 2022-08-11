@@ -5,7 +5,7 @@ import { GamesList } from '../../components/GamesList'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
-import { fetchFilteredGames } from '../../store/filteredGames/thunk'
+import { fetchFilteredGames, fetchFilterdGamesNextPage } from '../../store/filteredGames/thunk'
 import { selectFilteredGames } from '../../store/filteredGames/selectors'
 
 export function Home() {
@@ -30,11 +30,16 @@ export function Home() {
     }
   }
 
+  const handleLoadMoreClick = () => {
+    dispatch(fetchFilterdGamesNextPage({}) as any)
+  }
+
   return (
     <GamesList
       title='Browse Games'
       gamesState={gamesState}
       searchProps={{ value: searchQuery, onChange: handleSearchQueryChange, onClick: handleSearchClick }}
+      onLoadMore={handleLoadMoreClick}
     />
   )
 }

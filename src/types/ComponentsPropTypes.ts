@@ -25,6 +25,7 @@ export interface MainContainerProps {
   title: string
   gamesState: IGamesState
   searchProps: SearchFilterProps
+  onLoadMore: () => void
 }
 
 export interface SearchFilterProps {

@@ -37,6 +37,7 @@ export type IGamesState = {
   games: IGame[]
   loading: boolean
   hasError: boolean
+  page?: number
 }
 
 export type IGameDetails = {

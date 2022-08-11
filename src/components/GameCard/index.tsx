@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { createStyles, Card, Image, ActionIcon, Group, Text, Badge } from '@mantine/core'
 import { Notification } from '../Notification'
-import { IconHeart, IconCopy, IconStar } from '@tabler/icons'
+import { IconCopy, IconStar } from '@tabler/icons'
 import { GameCardProps } from '../../types/ComponentsPropTypes'
 import { trimGenres } from '../../utils'
 
@@ -82,9 +82,6 @@ export function GameCard({ id, background_image, genres, name, rating }: GameCar
             <Text sx={{ marginLeft: '-0.5rem' }}>{rating}</Text>
           </Group>
           <Group spacing={0}>
-            <ActionIcon>
-              <IconHeart size={18} color={theme.colors.red[6]} stroke={1.5} />
-            </ActionIcon>
             <ActionIcon onClick={handleCopyGameLink}>
               <IconCopy size={16} color={theme.colors.blue[6]} stroke={1.5} />
             </ActionIcon>

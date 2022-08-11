@@ -1,4 +1,4 @@
-import { createStyles, Title, Grid } from '@mantine/core'
+import { createStyles, Title, Grid, Button } from '@mantine/core'
 import { MainContainerProps } from '../../types/ComponentsPropTypes'
 
 // components
@@ -27,9 +27,14 @@ const useStyles = createStyles((theme) => ({
   grid: {
     margin: '1rem 0',
   },
+
+  loadMoreBtn: {
+    width: '20%',
+    margin: '1rem auto',
+  },
 }))
 
-export function GamesList({ title, gamesState, searchProps }: MainContainerProps) {
+export function GamesList({ title, gamesState, searchProps, onLoadMore }: MainContainerProps) {
   const { classes } = useStyles()
 
   return (
@@ -40,11 +45,16 @@ export function GamesList({ title, gamesState, searchProps }: MainContainerProps
       </div>
       <Grid className={classes.grid} gutter='xl'>
         {!gamesState.loading ? (
-          gamesState.games.map((game) => (
-            <Grid.Col key={game.id} xs={6} sm={5} md={4} lg={3}>
-              <GameCard {...game} />
-            </Grid.Col>
-          ))
+          <>
+            {gamesState.games.map((game) => (
+              <Grid.Col key={game.id} xs={6} sm={5} md={4} lg={3}>
+                <GameCard {...game} />
+              </Grid.Col>
+            ))}
+            <Button onClick={onLoadMore} disabled={gamesState.hasError} className={classes.loadMoreBtn}>
+              Load more
+            </Button>
+          </>
         ) : (
           <Loading />
         )}

@@ -7,7 +7,7 @@ import { GamesList } from '../../components/GamesList'
 
 // redux
 import { useAppSelector, useAppDispatch } from '../../hooks/reduxHooks'
-import { fetchFilteredGames } from '../../store/filteredGames/thunk'
+import { fetchFilteredGames, fetchFilterdGamesNextPage } from '../../store/filteredGames/thunk'
 import { selectFilteredGames } from '../../store/filteredGames/selectors'
 
 export function Genres() {
@@ -34,11 +34,16 @@ export function Genres() {
     }
   }
 
+  const handleLoadMoreClick = () => {
+    dispatch(fetchFilterdGamesNextPage({ search: searchQuery, genre: id }) as any)
+  }
+
   return (
     <GamesList
       title={`${platformName} Games`}
       gamesState={filteredGames}
       searchProps={{ value: searchQuery, onChange: handleSearchQueryChange, onClick: handleSearchClick }}
+      onLoadMore={handleLoadMoreClick}
     />
   )
 }
