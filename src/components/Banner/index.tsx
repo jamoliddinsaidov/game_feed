@@ -33,7 +33,7 @@ export function Banner({ background_image, name, metacritic }: BannerProps) {
       <Box className={classes.banner}>
         <Title className={classes.title}>{name}</Title>
         <div className={classes.metacritic}>
-          <Rating ratingValue={metacritic} />
+          <Rating ratingValue={metacritic} readonly={true} />
         </div>
       </Box>
     </BackgroundImage>

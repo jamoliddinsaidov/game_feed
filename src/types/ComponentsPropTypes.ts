@@ -69,3 +69,8 @@ export interface GameDetailsFooterProps {
 export interface ScreenshotsProps {
   screenshots: IScreenshot[]
 }
+
+export interface NotificationProps {
+  title?: string
+  description: string
+}

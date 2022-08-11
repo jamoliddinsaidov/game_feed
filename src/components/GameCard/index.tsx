@@ -1,11 +1,14 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { createStyles, Card, Image, ActionIcon, Group, Text, Badge } from '@mantine/core'
+import { Notification } from '../Notification'
 import { IconHeart, IconCopy, IconStar } from '@tabler/icons'
 import { GameCardProps } from '../../types/ComponentsPropTypes'
 
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    overflow: 'hidden',
 
     img: {
       transition: 'transform 500ms ease',
@@ -39,7 +42,16 @@ const useStyles = createStyles((theme) => ({
 }))
 
 export function GameCard({ id, background_image, genres, name, rating }: GameCardProps) {
+  const [isGameLinkCopied, setIsGameLinkCopied] = useState(false)
   const { classes, theme } = useStyles()
+
+  const handleCopyGameLink = () => {
+    const gameLink = `${window.location.origin}/game/${id}`
+    navigator.clipboard.writeText(gameLink)
+
+    setIsGameLinkCopied(true)
+    setTimeout(() => setIsGameLinkCopied(false), 1500)
+  }
 
   return (
     <Card withBorder p='lg' radius='md' className={classes.card}>
@@ -71,12 +83,13 @@ export function GameCard({ id, background_image, genres, name, rating }: GameCar
             <ActionIcon>
               <IconHeart size={18} color={theme.colors.red[6]} stroke={1.5} />
             </ActionIcon>
-            <ActionIcon>
+            <ActionIcon onClick={handleCopyGameLink}>
               <IconCopy size={16} color={theme.colors.blue[6]} stroke={1.5} />
             </ActionIcon>
           </Group>
         </Group>
       </Card.Section>
+      {isGameLinkCopied && <Notification description='Game link is copied' />}
     </Card>
   )
 }

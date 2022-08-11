@@ -25,7 +25,7 @@ export function GameDetailsFooter({ publishers, genres, developers, platforms }:
   const { classes } = useStyles()
 
   return (
-    <Grid className={classes.container}>
+    <Grid className={classes.container} grow>
       <Grid.Col xs={12} lg={6}>
         <Text className={classes.subtitle}>Publishers</Text>
         <Box className={classes.flexCenter}>
