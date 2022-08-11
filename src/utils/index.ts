@@ -1,4 +1,5 @@
 import { sub, add, format } from 'date-fns'
+import { IGenre } from '../types/GamePropTypes'
 
 export function getDateById(id: string): [string, string] {
   const date = new Date()
@@ -107,4 +108,8 @@ export function capitalize(label: string): string {
   const firstLetter = label.slice(0, 1).toUpperCase()
 
   return firstLetter + label.slice(1)
+}
+
+export function trimGenres(genres: IGenre[]): IGenre[] {
+  return genres.length > 3 ? genres.slice(0, 3) : genres
 }

@@ -4,6 +4,7 @@ import { createStyles, Card, Image, ActionIcon, Group, Text, Badge } from '@mant
 import { Notification } from '../Notification'
 import { IconHeart, IconCopy, IconStar } from '@tabler/icons'
 import { GameCardProps } from '../../types/ComponentsPropTypes'
+import { trimGenres } from '../../utils'
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -44,6 +45,7 @@ const useStyles = createStyles((theme) => ({
 export function GameCard({ id, background_image, genres, name, rating }: GameCardProps) {
   const [isGameLinkCopied, setIsGameLinkCopied] = useState(false)
   const { classes, theme } = useStyles()
+  const trimmedGenres = trimGenres(genres)
 
   const handleCopyGameLink = () => {
     const gameLink = `${window.location.origin}/game/${id}`
@@ -62,7 +64,7 @@ export function GameCard({ id, background_image, genres, name, rating }: GameCar
       </Card.Section>
 
       <Badge>
-        {genres.map(({ id, name }) => (
+        {trimmedGenres.map(({ id, name }) => (
           <span key={id}>{name} </span>
         ))}
       </Badge>
