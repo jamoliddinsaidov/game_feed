@@ -16,6 +16,7 @@ export const linkData = [
   {
     label: 'Top',
     icon: IconPresentationAnalytics,
+    initiallyOpened: true,
     links: [
       { label: 'Best of the year', link: '/top/bestoftheyear' },
       { label: `Popular in ${previousYear}`, link: `/top/popularin${previousYear}` },

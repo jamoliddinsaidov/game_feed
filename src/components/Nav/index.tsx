@@ -1,7 +1,10 @@
 import { Navbar, Title, Text, ScrollArea, createStyles } from '@mantine/core'
-import { LinksGroup } from './NavbarLinksGroup'
 import { linkData } from './constants'
 import { ToggleTheme } from '../ToggleTheme'
+
+// components
+import { LinksGroup } from './NavbarLinksGroup'
+import { UserButton } from '../UserButton'
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -50,6 +53,16 @@ const useStyles = createStyles((theme) => ({
   highlight: {
     color: theme.colors[theme.primaryColor][4],
   },
+
+  footer: {
+    marginLeft: -theme.spacing.md,
+    marginRight: -theme.spacing.md,
+    borderTop: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}`,
+
+    a: {
+      textDecoration: 'none',
+    },
+  },
 }))
 
 export function NavbarNested() {
@@ -74,6 +87,16 @@ export function NavbarNested() {
             <LinksGroup {...item} key={item.label} />
           ))}
         </div>
+      </Navbar.Section>
+
+      <Navbar.Section className={classes.footer}>
+        <a href='https://github.com/jamoliddinsaidov' target='_blank' rel='noreferrer'>
+          <UserButton
+            image='https://avatars.githubusercontent.com/u/60813978?v=4'
+            name='Jamoliddin Saidov'
+            email='GitHub Profile'
+          />
+        </a>
       </Navbar.Section>
     </Navbar>
   )
